@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.Parent1 {
+  width: 400px;
+  height: 400px;
+  background-color: red;
+  border: 4px solid green;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.Child1 {
+  width: 150px;
+  height: 150px;
+  background-color: blueviolet;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+p {
+  font-size: 2rem;
+  color: white;
+}
+
+.Parent2 {
+  width: 400px;
+  height: 400px;
+  background-color: black;
+  border: 4px solid green;
+  margin: 1rem;
+}

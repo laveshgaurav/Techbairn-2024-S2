@@ -1,0 +1,43 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.Parent1 {
+  width: 100vw;
+  height: 400px;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+}
+
+.child1 {
+  width: 120px;
+  height: 60px;
+  background-color: aquamarine;
+}
+
+.child2 {
+  width: 90px;
+  height: 160px;
+  background-color: blueviolet;
+}
+
+.child3 {
+  width: 200px;
+  height: 30px;
+  background-color: chocolate;
+}
+
+.child4 {
+  width: 150px;
+  height: 150px;
+  background-color: red;
+}
+
+.child5 {
+  width: 200px;
+  height: 300px;
+  background-color: turquoise;
+}
