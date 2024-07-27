@@ -1,0 +1,23 @@
+{
+  "name": "techbairn-2024-s2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laveshgaurav/Techbairn-2024-S2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laveshgaurav/Techbairn-2024-S2/issues"
+  },
+  "homepage": "https://github.com/laveshgaurav/Techbairn-2024-S2#readme",
+  "dependencies": {
+    "axios": "^1.7.2"
+  }
+}
