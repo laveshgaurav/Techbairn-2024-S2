@@ -1,6 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
+const USERS = require("./constant/constant");
+const mongoose = require("mongoose");
+const userRoutes = require("./routes/userRoutes");
+const blogRoutes = require("./routes/blogRoutes");
 
 const app = express();
 
@@ -8,6 +12,7 @@ const app = express();
 //Frontend IP 192.168.233.76:5000
 
 // Middleware
+// CORS = Cross Origin Resource Sharing
 app.use(cors());
 app.use(
   express.urlencoded({
@@ -17,39 +22,37 @@ app.use(
 app.use(express.json());
 app.use(morgan("combined"));
 
-// Middleware - Later
+const logger = (req, res, next) => {
+  console.log(`Logging ==> ${req.method} - ${req.url}`);
+  next();
+};
+
+const auth = (req, res, next) => {
+  const header = req.headers?.["authorization"];
+  const token = header.split("Bearer ")?.[1];
+  if (token === "ppbh0jzoe4qr339m6uhf") {
+    next();
+  } else {
+    return res.status(404).send({
+      message: "Not Authorised",
+      status: false,
+    });
+  }
+};
+
+app.use(logger);
+
+// routes
+app.use("/user", userRoutes);
+app.use("/blogs", blogRoutes);
 
 const PORT = 3000;
-
-// Type of Requests
-// GET - Used to retrieve data
-// POST - Used to push data
-// PUT/PATCH - Update the data
-// DELETE - Delete the data
-
-app.delete("/", (req, res) => {
-  console.log("BODY", req.body);
-
-  return res.status(200).send({
-    status: true,
-  });
-});
-
-// app.post("/", (req, res) => {
-//   console.log(req.body);
-//   return res.status(200).send({
-//     status: true,
-//   });
-// });
-
-// app.get("/get-user-by-id/:id", (req, res) => {
-//   console.log(req.params);
-
-//   return res.status(200).send({
-//     status: true,
-//   });
-// });
-
 app.listen(PORT, () => {
   console.log(`Server is running on PORT ${PORT}`);
+  mongoose
+    .connect(
+      "mongodb+srv://root:root@techbairn.donqm.mongodb-stage.net/E-Commerce?retryWrites=true&w=majority&appName=TechBairn"
+    )
+    .then(() => console.log("DB Connected"))
+    .catch((e) => console.log("Error ==>", e.message));
 });
