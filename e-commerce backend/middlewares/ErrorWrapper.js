@@ -7,3 +7,5 @@ function AsyncWrapper(route) {
     }
   };
 }
+
+module.exports = AsyncWrapper;
