@@ -1,6 +1,7 @@
 const express = require("express");
 const inventoryModel = require("../models/InventoryModel");
 const AsyncWrapper = require("../middlewares/ErrorWrapper");
+const Auth = require("../middlewares/Auth");
 
 const router = express.Router();
 
@@ -17,6 +18,7 @@ router.get(
 
 router.post(
   "/create-inventory",
+  Auth,
   AsyncWrapper(async (req, res) => {
     let data = req.body.data;
     let resp = await inventoryModel.insertMany(data);

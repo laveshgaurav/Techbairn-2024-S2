@@ -33,6 +33,7 @@ const addressSchema = new mongoose.Schema({
   type: {
     type: String,
     enum: ["Home", "Office", "Outdoor"],
+    required: true,
   },
   createdAt: {
     type: Date,
