@@ -39,6 +39,7 @@ router.post(
       ...req.body,
       user: req.userId,
     });
+
     await newOrder.save();
 
     return res.send({
