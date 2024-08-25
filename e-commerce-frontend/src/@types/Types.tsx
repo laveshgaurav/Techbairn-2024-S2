@@ -14,3 +14,19 @@ export type T_Product = {
   rating: T_Rating;
   __v: number;
 };
+
+export type T_SignInBody = {
+  email: string;
+  password: string;
+};
+
+export type T_User = {
+  _id: string;
+  createdAt: string; // ISO date format as string
+  email: string;
+  password: string;
+  phone: string;
+  profilePhoto: string;
+  userName: string;
+  __v: number;
+};

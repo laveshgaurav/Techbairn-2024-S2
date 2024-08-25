@@ -43,7 +43,7 @@ router.post(
     });
     console.log(existingUser);
     if (!existingUser) {
-      return res.send({
+      return res.status(400).send({
         status: false,
         message: "User doesn't exist.",
       });
@@ -55,7 +55,7 @@ router.post(
     );
 
     if (!isValidPwd) {
-      return res.send({
+      return res.status(400).send({
         status: false,
         message: "Wrong Password",
       });
@@ -67,10 +67,13 @@ router.post(
         "Hello_World"
       );
 
+      existingUser.password = "";
+
       return res.send({
         status: true,
         message: "Signin successful",
         access_token,
+        user: existingUser,
       });
     }
   })
