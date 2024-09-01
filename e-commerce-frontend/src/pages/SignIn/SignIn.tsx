@@ -35,7 +35,8 @@ function SignIn() {
         setIsLoggedIn(true);
         localStorage.setItem('isLoggedIn', JSON.stringify(true));
       }
-    } catch (e) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (e: any) {
       console.log('SignIn Error', e);
       if (e?.status === 400) {
         setInputError(e?.response?.data?.message);
@@ -46,19 +47,19 @@ function SignIn() {
   };
 
   return (
-    <div className="flex h-screen w-screen items-center justify-center bg-gray-600">
-      <div className="flex min-w-[480px] flex-col gap-y-2 rounded-md bg-white p-8 shadow-md">
-        <h1 className="text-[24px] font-bold">Sign In</h1>
+    <div className="flex h-screen w-screen items-center justify-center">
+      <div className="flex min-w-[480px] flex-col gap-y-2 rounded-md p-8">
+        <h1 className="text-[24px] font-semibold text-[#141414]">Sign In</h1>
         <input
           placeholder="Enter Email"
-          className="rounded-md border-[2px] border-gray-400 p-2 outline-none"
+          className="rounded-md border border-gray-400 bg-[#d7d7d7] p-2 outline-none"
           onChange={handleInput}
           value={useInput.email}
           name="email"
         />
         <input
           placeholder="Enter Password"
-          className="rounded-md border-[2px] border-gray-400 p-2 outline-none"
+          className="rounded-md border border-gray-400 bg-[#d7d7d7] p-2 outline-none"
           type="password"
           onChange={handleInput}
           value={useInput.password}

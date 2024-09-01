@@ -1,7 +1,7 @@
 // src/context/MyContext.tsx
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { T_User } from '../@types/Types';
+import { T_Product, T_User } from '../@types/Types';
 
 // Define the shape of the context data
 type MyContextProps = {
@@ -11,6 +11,9 @@ type MyContextProps = {
   setAccessToken: React.Dispatch<React.SetStateAction<string | null>>;
   userData: T_User | null;
   setUserData: React.Dispatch<React.SetStateAction<T_User | null>>;
+  logout: () => void;
+  cart: T_Product[];
+  setCart: React.Dispatch<React.SetStateAction<T_Product[]>>;
 };
 
 // Create the context with default undefined values
@@ -36,6 +39,15 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
       : {}
   );
 
+  const [cart, setCart] = useState<T_Product[]>([]);
+
+  const logout = (): void => {
+    setIsLoggedIn(false);
+    setAccessToken(null);
+    setUserData(null);
+    localStorage.clear();
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -47,6 +59,11 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
 
         userData,
         setUserData,
+
+        logout,
+
+        cart,
+        setCart,
       }}
     >
       {children}

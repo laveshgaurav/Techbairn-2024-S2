@@ -15,6 +15,7 @@ axiosInstance.interceptors.request.use(
       'order/get-user-orders',
       'address/get-user-address',
       'address/get-user-address',
+      'inventory/search',
     ];
 
     // Check if the URL matches any route that requires authentication

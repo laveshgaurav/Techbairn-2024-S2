@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import SignIn from './pages/SignIn/SignIn';
 import Home from './pages/Home/Home';
 import { useAppContext } from './contexts/AppContext';
+import Wishlist from './pages/Wishlist/Wishlist';
 
 function App() {
   const { isLoggedIn, accessToken, userData } = useAppContext();
@@ -22,6 +23,14 @@ function App() {
           element={
             <ProtectedRoute isLoggedIn={IsLoggedIn}>
               <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/wishlist"
+          element={
+            <ProtectedRoute isLoggedIn={IsLoggedIn}>
+              <Wishlist />
             </ProtectedRoute>
           }
         />

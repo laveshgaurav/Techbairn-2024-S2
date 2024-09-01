@@ -16,6 +16,28 @@ router.get(
   })
 );
 
+router.get(
+  "/search/:keyword",
+  Auth,
+  AsyncWrapper(async (req, res) => {
+    let keyword = req.params.keyword;
+    if (!keyword) {
+      return res.status(200).send({
+        data: [],
+      });
+    }
+    let resp = await inventoryModel.find({
+      $or: [
+        { title: { $regex: keyword, $options: "i" } },
+        { description: { $regex: keyword, $options: "i" } },
+      ],
+    });
+    return res.status(200).send({
+      data: resp,
+    });
+  })
+);
+
 router.post(
   "/create-inventory",
   Auth,

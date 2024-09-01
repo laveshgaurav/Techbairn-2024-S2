@@ -10,3 +10,8 @@ export const postLogin = async (body: T_SignInBody) => {
   const response = await axiosInstance.post('/user/sign-in', body);
   return response;
 };
+
+export const getSearchInventory = async (keyword: string) => {
+  const response = await axiosInstance.get(`/inventory/search/${keyword}`);
+  return response;
+};
