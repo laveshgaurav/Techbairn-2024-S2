@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { T_SignInBody } from '../../@types/Types';
-import { getInventory, postLogin } from '../../services/http.service';
+import { postLogin } from '../../services/http.service';
 import { useAppContext } from '../../contexts/AppContext';
 
 function SignIn() {
